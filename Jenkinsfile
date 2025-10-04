@@ -47,13 +47,11 @@ pipeline {
             }
         }
 
-        // 4️⃣ Docker Build
+        // 4️⃣ Docker Build (added as requested)
         stage('Docker Build') {
             steps {
-                echo "🐳 Building Docker Image..."
-                sh '''
-                docker build -t $IMAGE_NAME:$IMAGE_TAG .
-                '''
+                echo '🐳 Building Docker Image...'
+                sh 'docker build -t rupali1111:latest .'
             }
         }
 
