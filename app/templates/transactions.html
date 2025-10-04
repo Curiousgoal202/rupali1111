@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Transactions</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h2>📜 Transaction History</h2>
+    {% if transactions %}
+    <table>
+      <tr><th>ID</th><th>Amount</th><th>Status</th><th>Timestamp</th></tr>
+      {% for id, txn in transactions.items() %}
+      <tr>
+        <td>{{ id }}</td>
+        <td>{{ txn['amount'] }}</td>
+        <td>{{ txn['status'] }}</td>
+        <td>{{ txn['timestamp'] }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>No transactions yet.</p>
+    {% endif %}
+    <a href="/" class="back-btn">Back to Payment</a>
+  </div>
+</body>
+</html>

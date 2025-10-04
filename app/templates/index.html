@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment Gateway</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>💳 SecurePay Gateway</h1>
+    <form action="/process_payment" method="POST">
+      <input type="text" name="card_number" placeholder="Card Number" required>
+      <input type="number" name="amount" placeholder="Amount (₹)" required>
+      <button type="submit">Pay Now</button>
+    </form>
+    <a href="/transactions" class="view-btn">View Transactions</a>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul class="messages">
+          {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+  </div>
+</body>
+</html>
+

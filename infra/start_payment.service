@@ -1,0 +1,13 @@
+[Unit]
+Description=Payment Gateway Flask App
+After=network.target
+
+[Service]
+User=deployer
+WorkingDirectory=/home/deployer/payment-gateway
+Environment="PATH=/home/deployer/payment-gateway/venv/bin"
+ExecStart=/home/deployer/payment-gateway/venv/bin/gunicorn -w 3 -b 0.0.0.0:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
